@@ -48,6 +48,32 @@ namespace MasterDetail.Views
 
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
+            
         }
+
+        private void OnBindingContextChanged(object sender, EventArgs e)
+        {
+            ViewCell thisCell = ((ViewCell)sender);
+
+            if (thisCell != null)
+            {
+                var deleteAction = new MenuItem { Text = "Delete", IsDestructive = true }; // red background
+                deleteAction.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
+                deleteAction.Clicked += OnDelete;
+                thisCell.ContextActions.Add(deleteAction);
+
+            }
+        }
+
+        private void OnDelete(object sender, EventArgs e)
+        {
+            MenuItem thisItem = ((MenuItem)sender);
+
+
+            MessagingCenter.Send(this, "DeleteItem", (Item)thisItem.CommandParameter);
+        }
+
+
+
     }
 }

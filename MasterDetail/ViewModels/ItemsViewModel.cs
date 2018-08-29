@@ -27,6 +27,13 @@ namespace MasterDetail.ViewModels
                 Items.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
             });
+
+            MessagingCenter.Subscribe<ItemsPage, Item>(this, "DeleteItem", async (obj, item) =>
+             {
+                 var deleteItem = item as Item;
+
+                 await DataStore.DeleteItemAsync(item.Id);
+             });
         }
 
         async Task ExecuteLoadItemsCommand()
