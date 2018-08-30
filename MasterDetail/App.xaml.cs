@@ -2,10 +2,20 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MasterDetail.Views;
+using MasterDetail.ViewModels;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MasterDetail
 {
+
+    public static class ViewModelLocator
+    {
+        static ItemsViewModel itemsVM;
+        public static ItemsViewModel ItemsViewModel
+        => itemsVM ?? (itemsVM = new ItemsViewModel());
+    }
+
+
     public partial class App : Application
     {
 
