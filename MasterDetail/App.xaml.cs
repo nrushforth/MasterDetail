@@ -16,6 +16,19 @@ namespace MasterDetail
     }
 
 
+    //{
+    //    static MonkeysViewModel monkeysVM;
+    //    public static MonkeysViewModel MonkeysViewModel
+    //    => monkeysVM ?? (monkeysVM = new MonkeysViewModel());
+
+    //    static DetailsViewModel detailsVM;
+    //    public static DetailsViewModel DetailsViewModel
+    //    => detailsVM ?? (detailsVM = new DetailsViewModel(MonkeyHelper.Monkeys[0]));
+
+    //    BindingContext="{x:Static design:ViewModelLocator.MonkeysViewModel}"
+
+    //}
+
     public partial class App : Application
     {
 
